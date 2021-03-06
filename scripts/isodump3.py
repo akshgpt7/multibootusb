@@ -282,10 +282,7 @@ class ISO9660:
 
         #gen.log "-->(0x%x,0x%x)" %(s1, s2)
 
-        if (s1 == 0x55) and (s2 == 0xAA):
-            result = True   # "Bootable"
-        else:
-            result = False  # "Not bootable"
+        result = bool((s1 == 0x55) and (s2 == 0xAA))
 
         return result
 
@@ -632,10 +629,7 @@ class ISO9660:
                             self.isoFile.seek(0, os.SEEK_END)
                             iso_end = self.isoFile.tell()
                             #gen.log("%d-->%d")%(lastfile_end, iso_end)
-                            if iso_end >= lastfile_end:
-                                return True
-                            else:
-                                return False
+                            return iso_end >= lastfile_end
                         except(IOError):
                             #gen.log "exception when seek. iso is broken"
                             return False
