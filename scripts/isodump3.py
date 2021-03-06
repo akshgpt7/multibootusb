@@ -526,7 +526,7 @@ class ISO9660:
                 sys.stderr.write("can't makedirs\n")
                 return E_FAILURE
 
-        if all_type == True:
+        if all_type is True:
             # device file
             if dirRec.rrip != None and (dirRec.rrip.devH != 0 or dirRec.rrip.devL != 0):
                 #fFlag == 0
@@ -746,7 +746,7 @@ if __name__ == '__main__':
 
     iso9660fs = ISO9660(argv[-1])
     integrity = iso9660fs.checkIntegrity()
-    if integrity == False:
+    if integrity is False:
         gen.log("iso file is broken")
         sys.exit(-1)
 
@@ -781,10 +781,10 @@ if __name__ == '__main__':
             elif arg == "-p":
                 o = False
                 p = True
-            elif o == True:
+            elif o is True:
                 o_path = arg
                 o = False
-            elif p == True:
+            elif p is True:
                 pattern = arg
                 p = False
 
